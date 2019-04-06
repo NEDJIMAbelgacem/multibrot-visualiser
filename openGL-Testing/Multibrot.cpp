@@ -23,6 +23,7 @@ Multibrot::Multibrot(int power, glm::vec3 color, int max_iterations) :
 }
 
 void Multibrot::Draw() {
+	glCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 	shader->Bind();
 	vao->Bind();
 	glCall(glDrawArrays(GL_TRIANGLE_FAN, 0, 4));
@@ -48,7 +49,6 @@ void Multibrot::SetZoom(float zoom) {
 	if (this->zoom_value != zoom) {
 		zoom_value = zoom;
 		shader->FillUniform1f("u_zoom", zoom);
-		//std::cerr << (1.0f / zoom) << std::endl;
 	}
 }
 

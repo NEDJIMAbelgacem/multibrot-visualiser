@@ -142,7 +142,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\GLEW\lib\Release\Win32;$(SolutionDir)dependencies\GLFW32\lib-vc2015;$(SolutionDir)dependencies\Assimp\lib\x86</AdditionalLibraryDirectories>
-      <AdditionalDependencies>assimp.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>assimp.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;glew32s.lib;-libgmpxx;-lgmp;%(AdditionalDependencies)</AdditionalDependencies>
+      <AddModuleNamesToAssembly>
+      </AddModuleNamesToAssembly>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -190,6 +192,7 @@
     <ClInclude Include="MultibrotParam.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="TerrainTest.h" />
     <ClInclude Include="Test.h" />
@@ -224,10 +227,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\simulation_engine\fractals\multibrot.shader" />
+    <None Include="resources\shaders\simulation_engine\fractals\multibrot_pixelated.shader" />
     <None Include="resources\shaders\simulation_engine\plane_shader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="glm\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MultibrotVisualiser.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

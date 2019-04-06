@@ -14,8 +14,11 @@ void MultibrotParam::Display() {
 	ImGui::ColorEdit3("color", &this->color.x);
 	static const char * items[]{ "hue", "saturation", "value" };
 	ImGui::Combo("color transition", &this->selected, items, 3);
-	ImGui::SliderFloat("transition expopnent", &transition_exponent, 0.01, 6.0f);
+	ImGui::SliderFloat("expopnent stop 1", &exponent_stop_1, 0.01, exponent_stop_2);
+	ImGui::SliderFloat("expopnent stop 2", &exponent_stop_2, exponent_stop_1, 6.0f);
+	ImGui::SliderFloat("transition ratio", &color_transition_ratio, 0.0f, 5.0f);
 	ImGui::Text("Image zoomed in %.3f times", zoom_value);
+	ImGui::Text("Exponent : %.3f", transition_exponent);
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	ImGui::End();
 }
@@ -48,6 +51,14 @@ int MultibrotParam::GetColorTransition() {
 
 void MultibrotParam::SetZoomValue(float zoom) {
 	this->zoom_value = zoom;
+}
+
+void MultibrotParam::Update(float time_delta) {
+	transition_exponent += color_transition_sign * color_transition_ratio * time_delta;
+	if (transition_exponent > exponent_stop_2 || transition_exponent < exponent_stop_1)
+		color_transition_sign *= -1.0f;
+	if (transition_exponent < exponent_stop_1) transition_exponent = exponent_stop_1;
+	if (transition_exponent > exponent_stop_2) transition_exponent = exponent_stop_2;
 }
 
 void MultibrotParam::Render() {

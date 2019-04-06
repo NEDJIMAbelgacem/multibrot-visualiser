@@ -40,6 +40,9 @@
     <Filter Include="Source Files\OpenGL abstraction">
       <UniqueIdentifier>{0b0c3b08-90cc-4689-8c03-5a7647109e5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="NewFilter1">
+      <UniqueIdentifier>{22d024be-a447-4457-84ea-9d27cbba19a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -111,6 +114,9 @@
     <ClInclude Include="MultibrotParam.h">
       <Filter>Header Files\Simulation Engine</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -172,8 +178,16 @@
     <None Include="resources\shaders\simulation_engine\fractals\multibrot.shader">
       <Filter>Resource Files\shaders\Simulation Engine\Fractals</Filter>
     </None>
+    <None Include="resources\shaders\simulation_engine\fractals\multibrot_pixelated.shader">
+      <Filter>Resource Files\shaders\Simulation Engine\Fractals</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="glm\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MultibrotVisualiser.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

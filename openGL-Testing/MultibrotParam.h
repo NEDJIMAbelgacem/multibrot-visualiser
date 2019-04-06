@@ -11,10 +11,15 @@ private:
 	int selected = 0;
 	float zoom_value;
 	float transition_exponent = 1.0f;
+	float exponent_stop_1 = 1.0f;
+	float exponent_stop_2 = 1.0f;
+	float color_transition_ratio = 0.1f;
+	float color_transition_sign = 1.0f;
 public:
 	MultibrotParam();
 	void Display();
 	void Render();
+	void Update(float time_delta);
 	int GetMultibrotPower();
 	int GetMaxIterations();
 	float GetEscapeRadius();
